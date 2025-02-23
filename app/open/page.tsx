@@ -7,9 +7,9 @@ import { cases } from "@/lib/cases";
 import { useGameState } from "@/lib/hooks/useGameState";
 import { type Item, selectItemByWeight } from "@/lib/items";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
-export default function OpenPage() {
+function OpenPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isOpening, setIsOpening] = useState(false);
@@ -95,5 +95,21 @@ export default function OpenPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function OpenPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gray-900 text-white">
+          <div className="container mx-auto px-4 py-8 text-center">
+            Loading...
+          </div>
+        </div>
+      }
+    >
+      <OpenPageContent />
+    </Suspense>
   );
 }
