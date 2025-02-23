@@ -35,7 +35,7 @@ export default function Header({ balance, inventory, onDeposit }: HeaderProps) {
   return (
     <header className="bg-gray-800 py-4">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">CS:GO Case Opening</h1>
+        <h1 className="text-2xl font-bold">CS-Dooble</h1>
         <div className="flex items-center gap-6">
           <InventoryPreview items={inventory} />
           <span className="text-lg">Balance: ${balance.toFixed(2)}</span>
